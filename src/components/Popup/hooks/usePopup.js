@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const usePopup = () => {
+const usePopup = (isClosePopup) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isRender, setIsRender] = useState(false);
 
@@ -19,6 +19,13 @@ const usePopup = () => {
       setIsRender(false);
     }, 1000);
   };
+
+  useEffect(() => {
+    if (isClosePopup) {
+      onClose();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isClosePopup]);
 
   return {
     isOpen,

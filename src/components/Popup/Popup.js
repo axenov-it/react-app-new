@@ -1,18 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { useEffect } from "react";
 import PopupCard from "./components/PopupCard";
 import usePopup from "./hooks/usePopup";
 
 function Popup({ title, buttonName, children, isClosePopup }) {
-  const { isOpen, isRender, onClose, onOpen } = usePopup();
-
-  useEffect(() => {
-    if (isClosePopup) {
-      onClose();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isClosePopup]);
+  const { isOpen, isRender, onClose, onOpen } = usePopup(isClosePopup);
 
   return (
     <div>
